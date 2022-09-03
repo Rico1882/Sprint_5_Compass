@@ -1,12 +1,14 @@
 /// <reference types="cypress" />
 
-describe('Casos de teste sobre a rota /usurios da API Serverest', () => {
+import Serverest from '../../services/serveret.service'
+import ValidaServerest from '../../services/validaServerest.service'
+
+describe('Casos de teste sobre a rota /usuarios da API Serverest', () => {
 
     it('Deve buscar todos os usuarios cadastrados na serverest', () => {
-        cy.request('/usuarios').then( res => {
-            expect(res).to.be.a('object')
-            expect(res.body.quantidade).to.be.a('number')  
-            expect(res.body.quantidade).to.be.greaterThan(0) 
+       Serverest.buscarUsuarios().then( res => {
+        ValidaServerest.validarBuscaDeUsuarios(res) 
+            
         })      
     })
 
@@ -18,22 +20,15 @@ describe('Casos de teste sobre a rota /usurios da API Serverest', () => {
         })      
     })
 
-    it('Deve validar o comando personalisado', () => {
-        cy.rest('GET', '/usuarios').then( res => {
-            expect(res).to.be.a('object')
-            cy.log(JSON.stringify(res))
-        })
-    })
     it.only('Deve realizar login com suscesso', () => {
-        cy.buscarUsuarioParaLogin().then(usuario => {
-           cy.logar(usuario.email, usuario.senha).then( res=> {
-                expect(res).to.be.a('object')
-                expect(res.body.message).to.be.a('string')
-                expect(res.body).to.haveOwnProperty('authorization')
-                var bearer = res.body.authorization.slice(7)
-                cy.log(bearer)
+        Serverest.buscarUsuariosParaLogin()
+        cy.get('@usuarioLogin').then( usuario => {
+                Serverest.logar(usuario).then( res=> {
+                ValidaServerest.validaLoginComSucesso(res)
+                
            })
         }) 
        
+    })
 })
-})
+

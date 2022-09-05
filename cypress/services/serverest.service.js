@@ -1,4 +1,4 @@
-
+import Factory from '../fixtures/factory'
 
 const URL_USUARIOS  = '/usuarios'
 const URL_lOGIN     = '/login'
@@ -36,18 +36,14 @@ export default class Serverest {
     }
 
     static cadastrarProdutoComSucesso() {
-        return cy.request({
+       let produto = Factory.gerarProduto()
+       return cy.request({
             method: 'POST',
             url: URL_PRODUTOS,
-            body:{
-               "nome": "Logitech MrV Horizontal",
-               "preco": 47,
-               "descricao": "mouse",
-               "quantidade": 381
-            },
+            body: produto,
             failOnStatusCode: true,
             auth: {
-            bearer: Cypress.env("bearer"),
+                bearer: Cypress.env("bearer")
             }
         })
         

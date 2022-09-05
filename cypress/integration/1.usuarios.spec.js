@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
-import Serverest from '../services/serveret.service'
+import Factory from '../fixtures/factory'
+import Serverest from '../services/serverest.service'
 import ValidaServerest from '../services/validaServerest.service'
 
 describe('Casos de teste sobre a rota /usuarios da API Serverest', () => {
@@ -30,5 +31,30 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest', () => {
         }) 
        
     })
+
+    it('Deve buscar e salvar um usuário em um arquivo json', () => {
+        let inteiro = Factory.gerarInteiroAleatorio()
+        Serverest.buscarUsuarios().then(res => {
+            cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[inteiro])
+            ValidaServerest.validarBuscaDeUsuarios(res) 
+                
+            })
+    })
 })
+
+    it('Deve buscar o usuário de uma arquivo json', () => {
+       cy.fixture('usuario.json').then(json => {
+        let usuario = {
+            email: json.email,
+            password: json.password
+        }
+        Serverest.logar(usuario).then(res => {
+            ValidaServerest.validaLoginComSucesso(res)
+            Serverest.salvarBearer(res)
+       })
+
+        }) 
+    })
+
+ 
 

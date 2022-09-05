@@ -1,6 +1,4 @@
 
-
-
 export default class ValidaServerest {
     //Validações das ações que podemos realizar
     static validarBuscaDeUsuarios(resposta){

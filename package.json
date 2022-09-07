@@ -9,7 +9,9 @@
     "cy:open:prod": "cypress open --env configFile=prod",
     "cy:run:prod": "cypress run --env configFile=prod",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rico1882/Sprint_5_Compass.git"
@@ -24,6 +26,11 @@
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
     "ajv": "^8.11.0",
-    "cypress": "^9.7.0"
+    "cypress": "^9.7.0",
+    "cypress-multi-reporters": "^1.6.1",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0"
   }
 }

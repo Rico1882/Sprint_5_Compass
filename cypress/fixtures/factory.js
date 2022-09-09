@@ -12,7 +12,7 @@ export default class Factory{
             "quantidade": faker.datatype.number()
          }
     }
-    static gerarInteiroAleatorio(){
-        return faker.datatype.number(1)
+    static gerarInteiroAleatorio(qtd=0){
+        return faker.datatype.number(qtd)
     }
 }

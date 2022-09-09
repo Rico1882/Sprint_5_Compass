@@ -48,6 +48,40 @@ export default class Serverest {
         })
         
     }
-
+    static buscarCarrinhos(){
+        return cy.rest('GET', URL_CARRINHOS)
     }
+    
+
+    static buscarUsuariosParaLoginSemSucesso () {
+        cy.request(URL_USUARIOS).then(res => {
+            cy.wrap({
+                email: res.body.usuarios[0].email,
+                password: res.body.usuarios[0].password
+            }).as('usuarioLoginSemSucesso')
+                
+            })
+    }
+ 
+    static deletarProdutoCadastrado () {
+        return cy.request({
+            method: 'DELETE',
+            url: `${URL_PRODUTOS}/${Cypress.env('idProdutoCadastrado')}`,
+            auth: {
+                bearer: Cypress.env("bearer")
+            }
+
+        })
+    }
+    static deletarCarrinhoCadastrado () {
+        return cy.request({
+            method: 'DELETE',
+            url: `${URL_CARRINHOS}/${Cypress.env('idCarrinhoCadastrado')}`,
+            auth: {
+                bearer: Cypress.env("bearer")
+            }
+        })
+    } 
+}
+    
 

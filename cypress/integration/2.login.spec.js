@@ -12,7 +12,18 @@ describe('Casos de teste sobre a rota /login da API Serverest', () => {
                 ValidaServerest.validaLoginComSucesso(res)
                 Serverest.salvarBearer(res)
            })
-        }) 
-       
-    })
+        })    
+     
 })
+})
+    it.only('Deve realizar login sem suscesso', () => {
+        Serverest.buscarUsuariosParaLoginSemSucesso()
+        cy.post('usuarioLoginSemSucesso').then( usuario => {
+                ValidaServerest.validaLoginSemSucesso(res)
+                Serverest.salvarBearer(res)
+            
+              
+         })      
+     })
+
+    

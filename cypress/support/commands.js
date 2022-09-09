@@ -85,3 +85,13 @@ Cypress.Commands.add('buscarUsuarioParaLogin', () =>{
             }
         })
 })
+
+Cypress.Commands.add('loginSemSucesso', () =>{
+    cy.rest('POST', '/usuarios').then( res => {
+        expect(res.body).to.haveOwnProperty('usuarios')
+        return {
+            email: res.body.usuarios[0].email,
+            senha: res.body.usuarios[0].password
+            }
+        })
+})

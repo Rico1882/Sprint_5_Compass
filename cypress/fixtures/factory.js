@@ -15,4 +15,11 @@ export default class Factory{
     static gerarInteiroAleatorio(qtd=0){
         return faker.datatype.number(qtd)
     }
+
+    static criarCarrinho(){
+        return{
+        "idProduto": faker.finance.currencyCode(),
+        "quantidade": faker.datatype.number()
+        }
+    }
 }

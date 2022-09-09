@@ -27,13 +27,21 @@ export default class ValidaServerest {
         Cypress.env('idProdutoCadastrado', resposta.body._id)
     }
     static validarBuscaDeCarrinhos(resposta){
-        expect(resposta.body.quantidade).to.be.greaterThan(1)
-        Cypress.env('idCarrinhoCadastrado', resposta.body.concluir-compra)
+        expect(resposta.body.quantidade).to.be.greaterThan(0)
+        Cypress.env('idProdutoCadastrado', resposta.body._id)
     }
 
     static validaLoginSemSucesso(resposta){
         expect(resposta).to.be.a('object')
         expect(resposta.body.message).to.be.a('string')
-        expect(resposta.body).to.eq('email deve ser um email válido')
+        expect(resposta.body.message).to.eq('Email e/ou senha inválidos')
+    }
+
+    static validarCarrinhoComSucesso(resposta){
+        expect(resposta).to.be.a('object')
+        expect(resposta.body.message).to.be.a('string')
+        expect(resposta.body._id).to.be.a('string')
+        expect(resposta.body.message).to.eq('Cadastro realizado com sucesso')
+        Cypress.env('idCarrinhoCadastrado', resposta.body._id)
     }
 }

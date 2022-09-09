@@ -51,17 +51,7 @@ export default class Serverest {
     static buscarCarrinhos(){
         return cy.rest('GET', URL_CARRINHOS)
     }
-    
 
-    static buscarUsuariosParaLoginSemSucesso () {
-        cy.request(URL_USUARIOS).then(res => {
-            cy.wrap({
-                email: res.body.usuarios[0].email,
-                password: res.body.usuarios[0].password
-            }).as('usuarioLoginSemSucesso')
-                
-            })
-    }
  
     static deletarProdutoCadastrado () {
         return cy.request({
@@ -82,6 +72,27 @@ export default class Serverest {
             }
         })
     } 
-}
+
+    static cadastrarCarrinhoComSucesso() {
+        let Carrinho = Factory.criarCarrinho()
+        return cy.request({
+             method: 'POST',
+             url: URL_CARRINHOS,
+             body:{
+                produtos: "string",
+                idProduto: "string",
+                quantidade: "number"
+            },
+             failOnStatusCode: false,
+             auth: {
+                bearer: Cypress.env("bearer")
+                }
+        })
+             
+             }
+         }
+         
+     
+
     
 

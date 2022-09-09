@@ -12,13 +12,29 @@ describe('Casos de teste sobre a rota /Carrinhos da API Serverest', () => {
             ValidaServerest.validarBuscaDeCarrinhos(res) 
         })
         })
+    })
 
-        
+    context('Logar com sucesso', () => {
+        beforeEach('logar', () => {
+            Serverest.buscarUsuariosParaLogin()
+            cy.get('@usuarioLogin').then( usuario => {
+                    Serverest.logar(usuario).then( res=> {
+                    ValidaServerest.validaLoginComSucesso(res)
+                    Serverest.salvarBearer(res)
+                })
+        })
+    })  
+    
+    it.only('Deve Criar um novo carrinho com sucesso', () => {        
+        Serverest.cadastrarCarrinhoComSucesso().then( res => {
+            ValidaServerest.validarCarrinhoComSucesso(res)  
+        })  
+    })
 
     it ('Deve deletar um carrinho com sucesso', () => {
-            Serverest.deletarProdutoCadastrado().then( res => {
+            Serverest.deletarCarrinhoCadastrado().then( res => {
             cy.contractValidation(res, "delete-carrinhos-concluir-compra", 200)
-            expect(res.body.message).to.be.equal('Registro excluído com sucesso')
+            expect(res.body.message).to.be.equal('Nenhum registro excluído')
     })    
 
 })

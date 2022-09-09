@@ -30,7 +30,7 @@ describe('Casos de teste sobre a rota /produtos da API Serverest', () => {
         })
 
     it ('Deve deletar um produto com sucesso', () => {
-            Serverest.deletarCarrinhoCadastrado().then( res => {
+            Serverest.deletarProdutoCadastrado().then( res => {
             cy.contractValidation(res, "delete-produtos{_id}", 200)
             expect(res.body.message).to.be.equal('Registro excluído com sucesso')
     })

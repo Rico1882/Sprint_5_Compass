@@ -17,13 +17,14 @@ describe('Casos de teste sobre a rota /login da API Serverest', () => {
 })
 })
     it.only('Deve realizar login sem suscesso', () => {
-        Serverest.buscarUsuariosParaLoginSemSucesso()
-        cy.post('usuarioLoginSemSucesso').then( usuario => {
-                ValidaServerest.validaLoginSemSucesso(res)
-                Serverest.salvarBearer(res)
+            cy.loginSemSucesso().then( res=> {
+            cy.contractValidation(res, "get-login", 401)   //login com email e senha invalidos          
+            ValidaServerest.validaLoginSemSucesso(res)
+               
+           })
             
               
          })      
-     })
+     
 
     

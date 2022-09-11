@@ -41,7 +41,8 @@ export default class ValidaServerest {
         expect(resposta).to.be.a('object')
         expect(resposta.body.message).to.be.a('string')
         expect(resposta.body._id).to.be.a('string')
-        expect(resposta.body.message).to.eq('Cadastro realizado com sucesso')
+        expect(resposta.body).to.haveOwnProperty('_id')
+        expect(resposta.body.message).to.string('Cadastro realizado com sucesso')
         Cypress.env('idCarrinhoCadastrado', resposta.body._id)
     }
 }

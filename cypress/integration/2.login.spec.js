@@ -15,8 +15,8 @@ describe('Casos de teste sobre a rota /login da API Serverest', () => {
         })    
      
 })
-})
-    it.only('Deve realizar login sem suscesso', () => {
+
+    it('Deve realizar login sem suscesso', () => {
             cy.loginSemSucesso().then( res=> {
             cy.contractValidation(res, "get-login", 401)   //login com email e senha invalidos          
             ValidaServerest.validaLoginSemSucesso(res)
@@ -25,6 +25,6 @@ describe('Casos de teste sobre a rota /login da API Serverest', () => {
             
               
          })      
-     
+        })    
 
     

@@ -1,0 +1,173 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2022-09-10T22:57:42.283Z",
+    "end": "2022-09-10T22:57:45.566Z",
+    "duration": 3283,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6bec1222-2c25-49fd-8884-ef254b8f99e4",
+      "title": "",
+      "fullFile": "cypress/integration/4.carrinhos.spec.js",
+      "file": "cypress/integration/4.carrinhos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "40369bde-4f12-4dc0-9b8a-05940828ef59",
+          "title": "Casos de teste sobre a rota /Carrinhos da API Serverest",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve buscar todos os carrinhos cadastrados na serverest",
+              "fullTitle": "Casos de teste sobre a rota /Carrinhos da API Serverest Deve buscar todos os carrinhos cadastrados na serverest",
+              "timedOut": null,
+              "duration": 353,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_serverest.default.buscarCarrinhos().then(res => {\n  cy.contractValidation(res, \"get-carrinhos\", 200);\n  _validaServerest.default.validarBuscaDeCarrinhos(res);\n});",
+              "err": {},
+              "uuid": "dc6d6c01-a23a-4bf5-8a4e-c12cbc43be0c",
+              "parentUUID": "40369bde-4f12-4dc0-9b8a-05940828ef59",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dc6d6c01-a23a-4bf5-8a4e-c12cbc43be0c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 353,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "fd11b491-af97-4050-bf20-be9aa24bee62",
+          "title": "Logar com sucesso",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve Criar um novo carrinho com sucesso",
+              "fullTitle": "Logar com sucesso Deve Criar um novo carrinho com sucesso",
+              "timedOut": null,
+              "duration": 1253,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_serverest.default.cadastrarCarrinhoComSucesso().then(res => {\n  _validaServerest.default.validarCarrinhoComSucesso(res);\n});",
+              "err": {
+                "message": "AssertionError: expected undefined to be a string",
+                "estack": "AssertionError: expected undefined to be a string\n    at Function.validarCarrinhoComSucesso (https://serverest.dev/__cypress/tests?p=cypress\\integration\\4.carrinhos.spec.js:382:37)\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\integration\\4.carrinhos.spec.js:196:32)",
+                "diff": null
+              },
+              "uuid": "093f26a4-9726-4fd3-831e-1353c63248ae",
+              "parentUUID": "fd11b491-af97-4050-bf20-be9aa24bee62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve deletar um carrinho com sucesso",
+              "fullTitle": "Logar com sucesso Deve deletar um carrinho com sucesso",
+              "timedOut": null,
+              "duration": 1252,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_serverest.default.deletarCarrinhoCadastrado().then(res => {\n  cy.contractValidation(res, \"delete-carrinhos-concluir-compra\", 200);\n  expect(res.body.message).to.be.equal('Nenhum registro excluído');\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/carrinhos/undefined\n\nThe response we received from your web server was:\n\n  > 405: Method Not Allowed\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: DELETE\nURL: https://serverest.dev/carrinhos/undefined\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjYyODUwNjY0LCJleHAiOjE2NjI4NTEyNjR9.RZ2qTWDKxuXKBtd7u0Cj5P8zd00s50e7cYpYhu85CEE\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-length\": 0\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 405 - Method Not Allowed\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"7673a4a5-b8ea-4b83-9846-3ebc30603f9b\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"a5ee1485d7f5c0c8312b8454c236f444\",\n  \"date\": \"Sat, 10 Sep 2022 22:57:45 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"160\"\n}\nBody: {\n  \"message\": \"Não é possível realizar DELETE em /carrinhos/undefined. Acesse https://serverest.dev para ver as rotas disponíveis e como utilizá-las.\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/carrinhos/undefined\n\nThe response we received from your web server was:\n\n  > 405: Method Not Allowed\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: DELETE\nURL: https://serverest.dev/carrinhos/undefined\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNjYyODUwNjY0LCJleHAiOjE2NjI4NTEyNjR9.RZ2qTWDKxuXKBtd7u0Cj5P8zd00s50e7cYpYhu85CEE\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-length\": 0\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 405 - Method Not Allowed\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"7673a4a5-b8ea-4b83-9846-3ebc30603f9b\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"a5ee1485d7f5c0c8312b8454c236f444\",\n  \"date\": \"Sat, 10 Sep 2022 22:57:45 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"160\"\n}\nBody: {\n  \"message\": \"Não é possível realizar DELETE em /carrinhos/undefined. Acesse https://serverest.dev para ver as rotas disponíveis e como utilizá-las.\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Function.validaLoginComSucesso (https://serverest.dev/__cypress/tests?p=cypress\\integration\\4.carrinhos.spec.js:349:5)\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\integration\\4.carrinhos.spec.js:188:34)",
+                "diff": null
+              },
+              "uuid": "8e5ba109-ae92-4f10-a0e4-88b1a7d7f7ba",
+              "parentUUID": "fd11b491-af97-4050-bf20-be9aa24bee62",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "093f26a4-9726-4fd3-831e-1353c63248ae",
+            "8e5ba109-ae92-4f10-a0e4-88b1a7d7f7ba"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2505,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

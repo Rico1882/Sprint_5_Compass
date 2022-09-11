@@ -36,13 +36,13 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest', () => {
     it('Deve buscar e salvar um usuário em um arquivo json', () => {
             Serverest.buscarUsuarios().then(res => {
             let qtd_usuarios = res.body.quantidade
-            let inteiro = Factory.gerarInteiroAleatorio(limite)
+            let inteiro = Factory.gerarInteiroAleatorio()
             cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[inteiro])
             ValidaServerest.validarBuscaDeUsuarios(res) 
                 
             })
     })
-})
+
 
     it('Deve buscar o usuário de uma arquivo json', () => {
        cy.fixture('usuario.json').then(json => {
@@ -54,6 +54,6 @@ describe('Casos de teste sobre a rota /usuarios da API Serverest', () => {
 
         }) 
     })
-
+})
  
 

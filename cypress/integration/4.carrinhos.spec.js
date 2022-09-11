@@ -25,17 +25,31 @@ describe('Casos de teste sobre a rota /Carrinhos da API Serverest', () => {
         })
     })  
     
-    it.only('Deve Criar um novo carrinho com sucesso', () => {        
+    it('Deve Criar um novo carrinho com sucesso', () => {        
         Serverest.cadastrarCarrinhoComSucesso().then( res => {
-            ValidaServerest.validarCarrinhoComSucesso(res)  
+        ValidaServerest.validarCarrinhoComSucesso(res)  
         })  
     })
 
-    it ('Deve deletar um carrinho com sucesso', () => {
-            Serverest.deletarCarrinhoCadastrado().then( res => {
+    it('Deve deletar um carrinho com sucesso - Concluir Compra', () => {
+            Serverest.deletarCarrinhoCadastrado_concluir().then( res => {
             cy.contractValidation(res, "delete-carrinhos-concluir-compra", 200)
-            expect(res.body.message).to.be.equal('Nenhum registro excluído')
+            expect(res.body.message).to.be.equal('Registro excluído com sucesso')
     })    
+
+})
+
+    it('Deve Criar um novo carrinho com sucesso', () => {        
+        Serverest.cadastrarCarrinhoComSucesso().then( res => {
+        ValidaServerest.validarCarrinhoComSucesso(res)  
+    })  
+})
+
+    it('Deve deletar um carrinho com sucesso - Cancelar Compra', () => {
+    Serverest.deletarCarrinhoCadastrado_cancelar().then( res => {
+    cy.contractValidation(res, "delete-carrinhos-cancelar-compra", 200)
+    expect(res.body.message).to.be.equal('Registro excluído com sucesso. Estoque dos produtos reabastecido')
+})    
 
 })
 })

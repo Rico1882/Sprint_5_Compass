@@ -63,10 +63,20 @@ export default class Serverest {
 
         })
     }
-    static deletarCarrinhoCadastrado () {
+    static deletarCarrinhoCadastrado_concluir () {
         return cy.request({
             method: 'DELETE',
-            url: `${URL_CARRINHOS}/${Cypress.env('idCarrinhoCadastrado')}`,
+            url: `${URL_CARRINHOS}/concluir-compra`,
+            auth: {
+                bearer: Cypress.env("bearer")
+            }
+        })
+    } 
+
+    static deletarCarrinhoCadastrado_cancelar   () {
+        return cy.request({
+            method: 'DELETE',
+            url: `${URL_CARRINHOS}/cancelar-compra`,
             auth: {
                 bearer: Cypress.env("bearer")
             }
@@ -74,25 +84,29 @@ export default class Serverest {
     } 
 
     static cadastrarCarrinhoComSucesso() {
-        let Carrinho = Factory.criarCarrinho()
-        return cy.request({
+             return cy.request({
              method: 'POST',
              url: URL_CARRINHOS,
              body:{
-                produtos: "string",
-                idProduto: "string",
-                quantidade: "number"
+                "produtos": [
+                  {
+                    "idProduto": "BeeJh5lz3k6kSIzA",
+                    "quantidade": 3
+                  },
+                  {
+                    "idProduto": "K6leHdftCeOJj8BJ",
+                    "quantidade": 3
+                  }
+                ]
             },
-             failOnStatusCode: false,
-             auth: {
-                bearer: Cypress.env("bearer")
+            failOnStatusCode: false,
+            auth: {
+            bearer: Cypress.env("bearer")
                 }
-        })
-             
+                  
+             })
+
              }
-         }
          
-     
-
-    
-
+         
+            }

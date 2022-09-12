@@ -35,6 +35,7 @@ describe('Casos de teste sobre a rota /Carrinhos da API Serverest', () => {
             Serverest.deletarCarrinhoCadastrado_concluir().then( res => {
             cy.contractValidation(res, "delete-carrinhos-concluir-compra", 200)
             expect(res.body.message).to.be.equal('Registro excluído com sucesso')
+            // Código feito com participação de Regina Azzi e Vinivius Alexandre
     })    
 
 })
@@ -49,6 +50,7 @@ describe('Casos de teste sobre a rota /Carrinhos da API Serverest', () => {
     Serverest.deletarCarrinhoCadastrado_cancelar().then( res => {
     cy.contractValidation(res, "delete-carrinhos-cancelar-compra", 200)
     expect(res.body.message).to.be.equal('Registro excluído com sucesso. Estoque dos produtos reabastecido')
+    // Código feito com participação de Regina Azzi e Vinivius Alexandre
 })    
 
 })

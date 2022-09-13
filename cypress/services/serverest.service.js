@@ -91,11 +91,11 @@ export default class Serverest {
                 "produtos": [
                   {
                     "idProduto": "BeeJh5lz3k6kSIzA",
-                    "quantidade": 3
+                    "quantidade": 8
                   },
                   {
                     "idProduto": "K6leHdftCeOJj8BJ",
-                    "quantidade": 3
+                    "quantidade": 7
                   }
                 ]
             },

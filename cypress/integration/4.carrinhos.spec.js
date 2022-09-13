@@ -12,8 +12,8 @@ describe('Casos de teste sobre a rota /Carrinhos da API Serverest', () => {
             ValidaServerest.validarBuscaDeCarrinhos(res) 
         })
         })
-    })
-
+    
+    
     context('Logar com sucesso', () => {
         beforeEach('logar', () => {
             Serverest.buscarUsuariosParaLogin()
@@ -53,5 +53,6 @@ describe('Casos de teste sobre a rota /Carrinhos da API Serverest', () => {
     // Código feito com participação de Regina Azzi e Vinivius Alexandre
 })    
 
+})
 })
 })
